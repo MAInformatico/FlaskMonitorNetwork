@@ -4,10 +4,8 @@ from app import app
 @app.route('/')
 @app.route('/index')
 def index():
-    hosts = [
-            {'IP': 'Hosts example 0'},
-            {'IP': 'Hosts example 1'},
-            {'IP': 'Hosts example 2'},
-            {'IP': 'Hosts example 3'}
-            ]
+    print("Files in %r: %s" % (cwd, files))
+    with open('app/currentHosts.txt', 'r') as f: #indicate the path of the file
+        hosts = [iterator.strip() for iterator in f]
+            
     return render_template('index.html', title='Monitoring Network', hosts=hosts)
